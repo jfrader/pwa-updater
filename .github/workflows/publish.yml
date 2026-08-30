@@ -1,0 +1,99 @@
+name: Publish package
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+  id-token: write
+  packages: write
+
+concurrency:
+  group: publish-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.repository == 'jfrader/pwa-updater'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out release
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up npmjs
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
+
+      - name: Install release npm
+        run: npm install --global npm@11.18.0
+
+      - name: Verify release identity
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFileSync } from 'node:fs';
+          const manifest = JSON.parse(readFileSync('package.json', 'utf8'));
+          const lock = JSON.parse(readFileSync('package-lock.json', 'utf8'));
+          if (manifest.name !== '@jfrader/pwa-updater') throw new Error('Unexpected package name');
+          if (process.env.GITHUB_REF_NAME !== `v${manifest.version}`) throw new Error('Tag/version mismatch');
+          if (lock.version !== manifest.version || lock.packages[''].version !== manifest.version) {
+            throw new Error('Manifest/lock version mismatch');
+          }
+          NODE
+          git fetch origin main
+          git merge-base --is-ancestor "$GITHUB_SHA" origin/main
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check release
+        run: |
+          npm run check
+          git diff --exit-code -- dist package.json package-lock.json
+
+      - name: Pack once
+        id: pack
+        run: |
+          mkdir -p "$RUNNER_TEMP/release"
+          npm pack --ignore-scripts --json --pack-destination "$RUNNER_TEMP/release" > "$RUNNER_TEMP/pack.json"
+          node --input-type=module <<'NODE'
+          import { appendFileSync, readFileSync } from 'node:fs';
+          import path from 'node:path';
+          const [packed] = JSON.parse(readFileSync(process.env.RUNNER_TEMP + '/pack.json', 'utf8'));
+          const manifest = JSON.parse(readFileSync('package.json', 'utf8'));
+          if (packed.name !== manifest.name || packed.version !== manifest.version) {
+            throw new Error('Packed artifact identity mismatch');
+          }
+          appendFileSync(process.env.GITHUB_OUTPUT, `artifact=${path.join(process.env.RUNNER_TEMP, 'release', packed.filename)}\n`);
+          NODE
+
+      - name: Publish to npmjs
+        run: node scripts/publish-registry.mjs "${{ steps.pack.outputs.artifact }}" https://registry.npmjs.org
+
+      - name: Set up GitHub Packages
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: 24
+          registry-url: https://npm.pkg.github.com
+          scope: "@jfrader"
+          package-manager-cache: false
+
+      - name: Publish to GitHub Packages
+        # Direct publish of the exact packed artifact. The publish-registry.mjs
+        # pre-check is not used here: `npm view` against npm.pkg.github.com can
+        # fall back to npmjs data for a package that does not exist yet on GH,
+        # which would skip the first publish. The explicit scope-key override
+        # is required: the repo's committed .npmrc maps @jfrader to npmjs
+        # (for CLI publishing) and beats the runner's GH scope mapping.
+        run: npm publish "${{ steps.pack.outputs.artifact }}" --ignore-scripts --access=public --@jfrader:registry=https://npm.pkg.github.com
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

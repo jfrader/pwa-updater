@@ -1,0 +1,83 @@
+{
+  "name": "@jfrader/pwa-updater",
+  "version": "0.1.0",
+  "packageManager": "npm@11.18.0",
+  "description": "Zero-dependency PWA version-reload for small apps: new-deploy detection against /version.json, once-per-version prompt state, reload orchestration. Extracted from @jfrader/observability.",
+  "type": "module",
+  "license": "MIT",
+  "author": {
+    "name": "jfrader",
+    "email": "jfrader@pm.me",
+    "url": "https://github.com/jfrader"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jfrader/pwa-updater.git"
+  },
+  "homepage": "https://github.com/jfrader/pwa-updater#readme",
+  "bugs": {
+    "url": "https://github.com/jfrader/pwa-updater/issues"
+  },
+  "keywords": [
+    "pwa",
+    "service-worker",
+    "version-reload",
+    "reload",
+    "update",
+    "typescript"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "skills"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "react": "*"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "check": "npm run typecheck && npm test && npm run build && npm run check:package",
+    "check:package": "node scripts/check-package-files.mjs",
+    "prepare": "npm run build",
+    "prepublish": "npm run build",
+    "prepublishOnly": "npm run check"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/react": "^16.3.0",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "jsdom": "^26.1.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.8.0",
+    "vitest": "^3.2.0"
+  }
+}
