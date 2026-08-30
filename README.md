@@ -23,6 +23,13 @@ What stays **per app** (deliberately out of scope):
 - install-promotion rules (`beforeinstallprompt` banners);
 - the update modal's UI, copy, and design tokens.
 
+Apps with hardened PWA handoff requirements (service-worker claim handshakes,
+`SKIP_WAITING`/`clientsClaim` messaging, controller-change timeouts, legacy
+tombstone endpoints) keep that orchestration in app code: use the hook for
+detection and prompt state, run the app-specific reloader from the modal
+action, and write the per-version reload marker only after the handoff
+succeeds so failed updates stay retryable (`writeReloadedFor` is exported).
+
 ## Install
 
 ```bash

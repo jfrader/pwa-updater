@@ -82,6 +82,13 @@ if (isDynamicImportError(error)) {
   migration endpoints.
 - Install-promotion rules (`beforeinstallprompt` banners).
 - Modal UI, copy, and design tokens.
+- Hardened handoff orchestration: service-worker claim handshakes,
+  `SKIP_WAITING`/`clientsClaim` messaging, controller-change timeouts, and
+  legacy tombstone migration stay in app code. The package owns detection,
+  prompt loop-safety, and the default document reload only. Apps with such a
+  reloader run it from the modal action, and write the per-version reload
+  marker only after the handoff succeeds (use the exported
+  `writeReloadedFor`) so failed updates remain retryable.
 
 ## Verification
 
