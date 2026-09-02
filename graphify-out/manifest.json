@@ -1,0 +1,56 @@
+{
+  "package.json": {
+    "mtime": 1788055315.9312906,
+    "seen": 1788381050.4115806,
+    "ast_hash": "413f652fa1d9faa0e986ff31a6897867",
+    "semantic_hash": "413f652fa1d9faa0e986ff31a6897867"
+  },
+  "scripts/check-package-files.mjs": {
+    "mtime": 1788055354.2602935,
+    "seen": 1788381050.4115846,
+    "ast_hash": "25a718a511d878617b6f6fa6c875bb3d",
+    "semantic_hash": "25a718a511d878617b6f6fa6c875bb3d"
+  },
+  "scripts/publish-registry.mjs": {
+    "mtime": 1788055357.1382937,
+    "seen": 1788381050.4115865,
+    "ast_hash": "4c4d7d0c3329d3ca459a473f7c8956b9",
+    "semantic_hash": "4c4d7d0c3329d3ca459a473f7c8956b9"
+  },
+  "src/core.ts": {
+    "mtime": 1788055333.702292,
+    "seen": 1788381050.4115875,
+    "ast_hash": "bb1dc6d2f63e53a435ee1081195fa422",
+    "semantic_hash": "bb1dc6d2f63e53a435ee1081195fa422"
+  },
+  "src/index.ts": {
+    "mtime": 1788055340.1332924,
+    "seen": 1788381050.4115887,
+    "ast_hash": "3684324bc6f9e93a28ac26f9e7d810e4",
+    "semantic_hash": "3684324bc6f9e93a28ac26f9e7d810e4"
+  },
+  "src/react.tsx": {
+    "mtime": 1788055338.9452922,
+    "seen": 1788381050.4115896,
+    "ast_hash": "9b7e5eb1c15bdefbd45c2e8c2cf317f6",
+    "semantic_hash": "9b7e5eb1c15bdefbd45c2e8c2cf317f6"
+  },
+  "test/version.test.tsx": {
+    "mtime": 1788055348.030293,
+    "seen": 1788381050.4115906,
+    "ast_hash": "2edc8c7ea7d93d4084b5127afb15ed6c",
+    "semantic_hash": "2edc8c7ea7d93d4084b5127afb15ed6c"
+  },
+  "tsconfig.json": {
+    "mtime": 1788055316.8302906,
+    "seen": 1788381050.4115915,
+    "ast_hash": "48fa251549fb737efcbdbd41b0c5232b",
+    "semantic_hash": "48fa251549fb737efcbdbd41b0c5232b"
+  },
+  "vitest.config.ts": {
+    "mtime": 1788055317.2592907,
+    "seen": 1788381050.4115925,
+    "ast_hash": "9d174f72ac0769e25661e8b0c3355932",
+    "semantic_hash": "9d174f72ac0769e25661e8b0c3355932"
+  }
+}

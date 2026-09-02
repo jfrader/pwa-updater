@@ -1,0 +1,276 @@
+{
+  "communities": {
+    "0": [
+      "package",
+      "package_author",
+      "package_author_email",
+      "package_author_name",
+      "package_author_url",
+      "package_bugs",
+      "package_bugs_url",
+      "package_description",
+      "package_engines",
+      "package_engines_node",
+      "package_exports",
+      "package_exports_dist",
+      "package_exports_package_json",
+      "package_files",
+      "package_homepage",
+      "package_json_ref_dist",
+      "package_license",
+      "package_main",
+      "package_name",
+      "package_packagemanager",
+      "package_peerdependenciesmeta",
+      "package_peerdependenciesmeta_react",
+      "package_publishconfig",
+      "package_publishconfig_access",
+      "package_react_optional",
+      "package_repository",
+      "package_repository_type",
+      "package_repository_url",
+      "package_type",
+      "package_types",
+      "package_version",
+      "ref_skills"
+    ],
+    "1": [
+      "src_core",
+      "src_core_checkserverversion",
+      "src_core_default_poll_interval_ms",
+      "src_core_default_reload_delay_ms",
+      "src_core_default_server_version_path",
+      "src_core_default_storage_key",
+      "src_core_dynamic_import_error_patterns",
+      "src_core_errormessage",
+      "src_core_isdynamicimporterror",
+      "src_core_readreloadedfor",
+      "src_core_sessionstoragelike",
+      "src_core_versiondocument",
+      "src_core_versionmarkerstorage",
+      "src_core_versionmarkerstorage_getitem",
+      "src_core_versionmarkerstorage_removeitem",
+      "src_core_versionmarkerstorage_setitem",
+      "src_core_versionreloadoptions",
+      "src_core_versionreloadstate",
+      "src_core_writereloadedfor",
+      "src_index",
+      "src_react",
+      "src_react_useversionreload",
+      "test_version_test",
+      "test_version_test_fetchmock",
+      "test_version_test_mockversion",
+      "test_version_test_waitforcheck"
+    ],
+    "2": [
+      "jsdom",
+      "package_devdependencies",
+      "package_devdependencies_jsdom",
+      "package_devdependencies_react",
+      "package_devdependencies_react_dom",
+      "package_devdependencies_rimraf",
+      "package_devdependencies_testing_library_dom",
+      "package_devdependencies_testing_library_react",
+      "package_devdependencies_types_node",
+      "package_devdependencies_types_react",
+      "package_devdependencies_types_react_dom",
+      "package_devdependencies_vitest",
+      "package_peerdependencies",
+      "package_peerdependencies_react",
+      "react",
+      "react_dom",
+      "rimraf",
+      "testing_library_dom",
+      "testing_library_react",
+      "types_node",
+      "types_react",
+      "types_react_dom",
+      "vitest"
+    ],
+    "3": [
+      "ref_dom",
+      "ref_dom_iterable",
+      "ref_es2022",
+      "tsconfig_compileroptions",
+      "tsconfig_compileroptions_declaration",
+      "tsconfig_compileroptions_esmoduleinterop",
+      "tsconfig_compileroptions_forceconsistentcasinginfilenames",
+      "tsconfig_compileroptions_inlinesources",
+      "tsconfig_compileroptions_jsx",
+      "tsconfig_compileroptions_lib",
+      "tsconfig_compileroptions_module",
+      "tsconfig_compileroptions_moduleresolution",
+      "tsconfig_compileroptions_outdir",
+      "tsconfig_compileroptions_resolvejsonmodule",
+      "tsconfig_compileroptions_rootdir",
+      "tsconfig_compileroptions_skiplibcheck",
+      "tsconfig_compileroptions_sourcemap",
+      "tsconfig_compileroptions_strict",
+      "tsconfig_compileroptions_target"
+    ],
+    "4": [
+      "package_scripts",
+      "package_scripts_build",
+      "package_scripts_check",
+      "package_scripts_check_package",
+      "package_scripts_clean",
+      "package_scripts_prepare",
+      "package_scripts_prepublish",
+      "package_scripts_prepublishonly",
+      "package_scripts_test",
+      "package_scripts_test_watch",
+      "package_scripts_typecheck"
+    ],
+    "5": [
+      "package_devdependencies_typescript",
+      "package_keywords",
+      "ref_pwa",
+      "ref_reload",
+      "ref_service_worker",
+      "ref_update",
+      "ref_version_reload",
+      "typescript"
+    ],
+    "6": [
+      "ref_node_modules",
+      "ref_src",
+      "ref_test",
+      "tsconfig",
+      "tsconfig_exclude",
+      "tsconfig_include",
+      "tsconfig_json_ref_dist"
+    ],
+    "7": [
+      "scripts_publish_registry",
+      "scripts_publish_registry_artifact_registry",
+      "scripts_publish_registry_assertsameartifact",
+      "scripts_publish_registry_execfileasync",
+      "scripts_publish_registry_manifest",
+      "scripts_publish_registry_npm",
+      "scripts_publish_registry_readpublishedintegrity"
+    ],
+    "8": [
+      "scripts_check_package_files",
+      "scripts_check_package_files_artifacts",
+      "scripts_check_package_files_files",
+      "scripts_check_package_files_output"
+    ],
+    "9": [
+      "vitest_config"
+    ]
+  },
+  "cohesion": {
+    "0": 0.0625,
+    "1": 0.1753846153846154,
+    "2": 0.08695652173913043,
+    "3": 0.10526315789473684,
+    "4": 0.18181818181818182,
+    "5": 0.25,
+    "6": 0.2857142857142857,
+    "7": 0.38095238095238093,
+    "8": 0.5,
+    "9": 1.0
+  },
+  "gods": [
+    {
+      "id": "tsconfig_compileroptions",
+      "label": "compilerOptions",
+      "degree": 16
+    },
+    {
+      "id": "package_scripts",
+      "label": "scripts",
+      "degree": 11
+    },
+    {
+      "id": "package_keywords",
+      "label": "keywords",
+      "degree": 7
+    },
+    {
+      "id": "src_core_writereloadedfor",
+      "label": "writeReloadedFor()",
+      "degree": 6
+    },
+    {
+      "id": "src_core_versionmarkerstorage",
+      "label": "VersionMarkerStorage",
+      "degree": 5
+    },
+    {
+      "id": "src_core_readreloadedfor",
+      "label": "readReloadedFor()",
+      "degree": 5
+    },
+    {
+      "id": "src_react_useversionreload",
+      "label": "useVersionReload()",
+      "degree": 5
+    },
+    {
+      "id": "package_author",
+      "label": "author",
+      "degree": 4
+    },
+    {
+      "id": "src_core_default_storage_key",
+      "label": "DEFAULT_STORAGE_KEY",
+      "degree": 4
+    },
+    {
+      "id": "src_core_sessionstoragelike",
+      "label": "sessionStorageLike()",
+      "degree": 4
+    }
+  ],
+  "surprises": [
+    {
+      "source": "useVersionReload()",
+      "target": "sessionStorageLike()",
+      "source_files": [
+        "src/react.tsx",
+        "src/core.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "cross-file semantic connection"
+    },
+    {
+      "source": "useVersionReload()",
+      "target": "readReloadedFor()",
+      "source_files": [
+        "src/react.tsx",
+        "src/core.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "cross-file semantic connection"
+    },
+    {
+      "source": "useVersionReload()",
+      "target": "writeReloadedFor()",
+      "source_files": [
+        "src/react.tsx",
+        "src/core.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "cross-file semantic connection"
+    },
+    {
+      "source": "useVersionReload()",
+      "target": "checkServerVersion()",
+      "source_files": [
+        "src/react.tsx",
+        "src/core.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "cross-file semantic connection"
+    }
+  ],
+  "tokens": {
+    "input": 0,
+    "output": 0
+  }
+}
