@@ -1,5 +1,11 @@
 # @jfrader/pwa-updater
 
+[![npm version](https://img.shields.io/npm/v/@jfrader/pwa-updater?style=flat)](https://www.npmjs.com/package/@jfrader/pwa-updater)
+[![npm downloads](https://img.shields.io/npm/dm/@jfrader/pwa-updater?style=flat)](https://www.npmjs.com/package/@jfrader/pwa-updater)
+[![ci](https://img.shields.io/github/actions/workflow/status/jfrader/pwa-updater/ci.yml?branch=main&style=flat&label=ci)](https://github.com/jfrader/pwa-updater/actions)
+[![license](https://img.shields.io/github/license/jfrader/pwa-updater?style=flat)](./LICENSE)
+[![node](https://img.shields.io/node/v/@jfrader/pwa-updater?style=flat)](https://www.npmjs.com/package/@jfrader/pwa-updater)
+
 Zero-dependency PWA version-reload for small apps. Detects new deploys by
 comparing the version baked into the running bundle against a served
 `version.json`, owns the once-per-version prompt state, and performs the
