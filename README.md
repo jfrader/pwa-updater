@@ -5,10 +5,6 @@ comparing the version baked into the running bundle against a served
 `version.json`, owns the once-per-version prompt state, and performs the
 reload — without shipping a service-worker framework.
 
-It is the shared version-reload layer used by all jfrader apps (MiFulbo,
-Trucoshi, Huertoku, Civiku, Levantar). It was extracted from the version
-surface of `@jfrader/observability`, which keeps errors and analytics only.
-
 ## Why this package exists
 
 Every app was hand-rolling the same correctness-sensitive code — fetch
