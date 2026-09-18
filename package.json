@@ -1,6 +1,6 @@
 {
   "name": "@jfrader/pwa-updater",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "packageManager": "npm@11.18.0",
   "description": "Zero-dependency PWA version-reload for small apps: new-deploy detection against /version.json, once-per-version prompt state, reload orchestration. Extracted from @jfrader/observability.",
   "type": "module",
