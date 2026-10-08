@@ -11,26 +11,15 @@ comparing the version baked into the running bundle against a served
 `version.json`, owns the once-per-version prompt state, and performs the
 reload — without shipping a service-worker framework.
 
-## Why this package exists
+## Scope
 
-Every app was hand-rolling the same correctness-sensitive code — fetch
-`version.json` (no-store), compare against the bundle version, prompt at most
-once per version, reload without looping when a CDN still serves old HTML —
-and the copies had diverged. This package is that logic, tested once.
+One tested copy of the version check, once-per-version prompt, and loop-safe
+reload. Each app keeps its own service-worker registration, cache names, legacy
+migration endpoints, install banners, and update modal.
 
-What stays **per app** (deliberately out of scope):
-
-- service-worker registration, cache names, precache lists;
-- legacy SW migration endpoints;
-- install-promotion rules (`beforeinstallprompt` banners);
-- the update modal's UI, copy, and design tokens.
-
-Apps with hardened PWA handoff requirements (service-worker claim handshakes,
-`SKIP_WAITING`/`clientsClaim` messaging, controller-change timeouts, legacy
-tombstone endpoints) keep that orchestration in app code: use the hook for
-detection and prompt state, run the app-specific reloader from the modal
-action, and write the per-version reload marker only after the handoff
-succeeds so failed updates stay retryable (`writeReloadedFor` is exported).
+Apps with a service-worker claim handshake run it from `onReload` (or the modal
+action) and call `writeReloadedFor` only after the handoff succeeds, so failed
+updates stay retryable.
 
 ## Install
 
@@ -111,19 +100,11 @@ npm run build     # tsc -> dist
 
 ## Publishing
 
-Push an annotated `v<package-version>` tag from `main`. The release workflow
-checks the tag and lockfile, builds and tests once, packs one immutable
-tarball, then verifies or publishes that exact artifact to npmjs and GitHub
-Packages. Retries are safe: an existing matching artifact is accepted, a
-different artifact at the same version fails.
-
-- npmjs uses a trusted publisher for `jfrader/pwa-updater` →
-  `.github/workflows/publish.yml`.
-- GitHub Packages uses the workflow's scoped `GITHUB_TOKEN`; the package is
-  created public automatically from this public repo.
-- Never add `publishConfig.registry` to the manifest.
-- The repo `.npmrc` pins the `@jfrader` scope to npmjs for CLI publishing
-  (the user-level `~/.npmrc` maps it to GitHub Packages).
+Push an annotated `v<package-version>` tag from `main`. `publish.yml` builds,
+tests, and packs one tarball, then publishes that exact artifact to npmjs
+(trusted publisher) and GitHub Packages. Re-runs accept a matching artifact and
+fail on a different one. Never add `publishConfig.registry`; `.npmrc` pins the
+`@jfrader` scope to npmjs.
 
 ## Agent skill
 
